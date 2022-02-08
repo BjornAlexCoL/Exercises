@@ -45,7 +45,18 @@ namespace Exercises
         }
         private static void RunExerciseOne()
         {
-            Console.WriteLine("You successfully ran exercise one!");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("Please enter your first name: ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            string firstName = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write("Please enter your Last name: ");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            string lastName = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            Console.WriteLine("Hello {0} {1}!\nI'm glad to inform you are the test subject om my very first exercise!", firstName, lastName);
+            Console.ResetColor();
         }
         private static void RunExerciseTwo()
         {
