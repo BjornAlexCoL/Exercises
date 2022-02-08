@@ -60,7 +60,13 @@ namespace Exercises
         }
         private static void RunExerciseTwo()
         {
-            Console.WriteLine("You successfully ran exercise Two!");
+            DateTime todayDate = DateTime.Today;
+            DateTime yesterdayDate = todayDate.AddDays(-1);
+            DateTime tomorrowDate = todayDate.AddDays(1);
+            Console.WriteLine("Todays date is {0}",todayDate.ToShortDateString());
+            Console.WriteLine("Tomorrows date will be {0}", tomorrowDate.ToShortDateString());
+            Console.WriteLine("Yesterdays date was {0}", yesterdayDate.ToShortDateString());
+
         }
     }
 }
