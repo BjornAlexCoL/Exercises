@@ -25,6 +25,9 @@ namespace Exercises
                         case 3:
                             RunExerciseThree();
                             break;
+                        case 4:
+                            RunExerciseFour();
+                            break;
                         case -1:
                             keepAlive = false;
                             break;
@@ -80,6 +83,18 @@ namespace Exercises
             Console.Write("Enter your last name: ");
             lastName = Console.ReadLine();
             Console.WriteLine("{0} {1}", firstName, lastName);
+        }
+        private static void RunExerciseFour()
+        {
+            String str = "The quick fox Jumped Over the DOG";
+
+            String newStr;
+
+            newStr = str.Substring(0, 1) + str.Substring(1).ToLower();
+            newStr = newStr.Replace("quick", "brown");
+            newStr = newStr.Insert(newStr.IndexOf("dog"), "lazy ");
+
+            Console.WriteLine(newStr);
         }
     }
 }
