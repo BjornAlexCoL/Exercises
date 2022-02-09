@@ -13,7 +13,7 @@ namespace Exercises
                 {
                     Console.Write("Enter assignment number (or -1 to exit): ");
                     var assignmentChoice = int.Parse(Console.ReadLine() ?? "");
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Clear();
                     switch (assignmentChoice)
                     {
                         case 1:
@@ -22,8 +22,11 @@ namespace Exercises
                         case 2:
                             RunExerciseTwo();
                             break;
+                        case 3:
+                            RunExerciseThree();
+                            break;
                         case -1:
-                            keepAlive=false;
+                            keepAlive = false;
                             break;
                         default:
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -63,10 +66,20 @@ namespace Exercises
             DateTime todayDate = DateTime.Today;
             DateTime yesterdayDate = todayDate.AddDays(-1);
             DateTime tomorrowDate = todayDate.AddDays(1);
-            Console.WriteLine("Todays date is {0}",todayDate.ToShortDateString());
+            Console.WriteLine("Todays date is {0}", todayDate.ToShortDateString());
             Console.WriteLine("Tomorrows date will be {0}", tomorrowDate.ToShortDateString());
             Console.WriteLine("Yesterdays date was {0}", yesterdayDate.ToShortDateString());
 
+        }
+
+        private static void RunExerciseThree()
+        {
+            String firstName, lastName;
+            Console.Write("Enter your first name: ");
+            firstName = Console.ReadLine();
+            Console.Write("Enter your last name: ");
+            lastName = Console.ReadLine();
+            Console.WriteLine("{0} {1}", firstName, lastName);
         }
     }
 }
