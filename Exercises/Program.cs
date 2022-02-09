@@ -37,6 +37,9 @@ namespace Exercises
                         case 7:
                             RunExerciseSeven();
                             break;
+                        case 8:
+                            RunExerciseEight();
+                            break;
                         case 0:
                             keepAlive = false;
                             break;
@@ -58,11 +61,24 @@ namespace Exercises
             }
         }
 
+        private static void RunExerciseEight()
+        {
+            double number = GetValidDouble();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            double output = Math.Sqrt(number);
+            Console.WriteLine("The square root of {0} is {1}", number, output);
+            output = Math.Pow(number,2);
+            Console.WriteLine("{0} raised to 2 is {1}", number, output);
+            output = Math.Pow(number,10);
+            Console.WriteLine("{0} raised to 10 is {1}", number, output);
+
+        }
+
         private static void RunExerciseSeven()
         {
             double radius = GetValidDouble("Please enter the radius: ");
             double area = 2 * Math.PI * Math.Pow(radius, 2);
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("The area of a circle with radius {0} is {1}", radius, area);
             double volume = (4 * Math.PI * Math.Pow(radius, 3)) / 3;
             Console.WriteLine("The volume of a sphere with radius {0} is {1}", radius, volume);
@@ -72,7 +88,7 @@ namespace Exercises
 
             int numberOne = GetValidInt();
             int numberTwo = GetValidInt();
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             double output = (double)numberOne > numberTwo ? numberOne : numberTwo;
             Console.WriteLine("The biggest number of {0} and {1} is {2}", numberOne, numberTwo, output);
             output = (double)numberOne < numberTwo ? numberOne : numberTwo;
@@ -161,6 +177,7 @@ namespace Exercises
         private static void DisplayMenu()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("1.\tExercise One - Welcome!");
             Console.WriteLine("2.\tExercise Two - Dating");
             Console.WriteLine("3.\tExercise Three - Who are you?");
@@ -168,8 +185,11 @@ namespace Exercises
             Console.WriteLine("5.\tExercise Five - String of Manipulations");
             Console.WriteLine("6.\tExercise six - Comaprison of numbers");
             Console.WriteLine("7.\tExercise seven - Circelations");
+            Console.WriteLine("8.\tExercise eight - Roots of Power ");
+
 
             Console.WriteLine("0.\tExit");
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("\nEnter menu number (or 0 to exit): ");
         }
         private static int GetValidInt(string displayMessage) //Caller entered a message to display
@@ -178,7 +198,7 @@ namespace Exercises
             bool didParseNumber = false;
             do
             {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(displayMessage);
                 Console.ForegroundColor = ConsoleColor.Green;
 
@@ -203,7 +223,7 @@ namespace Exercises
             bool didParseNumber = false;
             do
             {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(displayMessage);
                 Console.ForegroundColor = ConsoleColor.Green;
                 didParseNumber = double.TryParse(Console.ReadLine(), out number);
