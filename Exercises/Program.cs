@@ -31,6 +31,9 @@ namespace Exercises
                         case 5:
                             RunExerciseFive();
                             break;
+                        case 6:
+                            RunExerciseSix();
+                            break;
                         case 0:
                             keepAlive = false;
                             break;
@@ -51,15 +54,42 @@ namespace Exercises
             }
         }
 
+        private static void RunExerciseSix()
+        {
+            int numberOne = GetValidInt();
+            int numberTwo = GetValidInt();
+            double output = (double)numberOne > numberTwo ? numberOne : numberTwo;
+            Console.WriteLine("The biggest number of {0} and {1} is {2}", numberOne, numberTwo, output);
+            output = (double)numberOne < numberTwo ? numberOne : numberTwo;
+            Console.WriteLine("The smallest number of {0} and {1} is {2}", numberOne, numberTwo, output);
+            output = Math.Abs((double)(numberOne - numberTwo));
+            Console.WriteLine("The diffrence between {0} and {1} is {2}", numberOne, numberTwo, output);
+            output = (double)(numberOne + numberTwo);
+            Console.WriteLine("The sum of {0} and {1} is {2}", numberOne, numberTwo, output);
+            output = (double)(numberOne * numberTwo);
+            Console.WriteLine("The product of {0} and {1} is {2}", numberOne, numberTwo, output);
+            if (numberTwo == 0)
+                Console.WriteLine("The ratio is infinte as the denominator can't be 0");
+
+            else
+            {
+                output = (double)numberOne / (double)numberTwo;
+                Console.WriteLine("The ratio of {0} and {1} is {2}", numberOne, numberTwo, output);
+            }
+
+
+
+        }
+
         private static void RunExerciseFive()
         {
             String str = "Arrays are very common in programming, they look something like: [1,2,3,4,5]";
             String newStr = str.Substring(str.IndexOf("["));
             newStr = newStr.Remove(newStr.IndexOf("2,3,"), 4);
-            for (int i = 6; i <= 10;i++)
-                {
-                newStr = newStr.Insert(newStr.Length-1,","+i);
-                }
+            for (int i = 6; i <= 10; i++)
+            {
+                newStr = newStr.Insert(newStr.Length - 1, "," + i);
+            }
 
             Console.WriteLine(newStr);
 
@@ -121,12 +151,28 @@ namespace Exercises
             Console.WriteLine("3.\tExercise Three - Who are you?");
             Console.WriteLine("4.\tExercise Four - Fox the Lazy Dog");
             Console.WriteLine("5.\tExercise Five - String of Manipulations");
+            Console.WriteLine("6.\tExercise six - Comaprison of numbers");
             Console.WriteLine("0.\tExit");
             Console.Write("\nEnter menu number (or 0 to exit): ");
-
-
-
         }
+        private static int GetValidInt()
+        {
+            Console.Write("Enter an integer: ");
+            int number = 0;
+            bool didParseNumber = false;
+            do
+            {
+                didParseNumber = int.TryParse(Console.ReadLine(), out number);
+                if (!didParseNumber)
+                {
+                    Console.WriteLine("You must enter a number");
+                }
+            }
+            while (didParseNumber == false);
+
+            return number;
+        }
+
 
     }
 }
