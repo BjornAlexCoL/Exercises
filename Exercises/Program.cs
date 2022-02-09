@@ -34,6 +34,9 @@ namespace Exercises
                         case 6:
                             RunExerciseSix();
                             break;
+                        case 7:
+                            RunExerciseSeven();
+                            break;
                         case 0:
                             keepAlive = false;
                             break;
@@ -42,6 +45,7 @@ namespace Exercises
                             Console.WriteLine("That is not a valid exercise number!");
                             break;
                     }
+                    Console.ResetColor();
                     Console.WriteLine("Hit any key to continue");
                     Console.ReadKey();
                 }
@@ -54,10 +58,21 @@ namespace Exercises
             }
         }
 
+        private static void RunExerciseSeven()
+        {
+            double radius = GetValidDouble("Please enter the radius: ");
+            double area = 2 * Math.PI * Math.Pow(radius, 2);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("The area of a circle with radius {0} is {1}", radius, area);
+            double volume = (4 * Math.PI * Math.Pow(radius, 3)) / 3;
+            Console.WriteLine("The volume of a sphere with radius {0} is {1}", radius, volume);
+        }
         private static void RunExerciseSix()
         {
+
             int numberOne = GetValidInt();
             int numberTwo = GetValidInt();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             double output = (double)numberOne > numberTwo ? numberOne : numberTwo;
             Console.WriteLine("The biggest number of {0} and {1} is {2}", numberOne, numberTwo, output);
             output = (double)numberOne < numberTwo ? numberOne : numberTwo;
@@ -69,15 +84,15 @@ namespace Exercises
             output = (double)(numberOne * numberTwo);
             Console.WriteLine("The product of {0} and {1} is {2}", numberOne, numberTwo, output);
             if (numberTwo == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("The ratio is infinte as the denominator can't be 0");
-
+            }
             else
             {
                 output = (double)numberOne / (double)numberTwo;
                 Console.WriteLine("The ratio of {0} and {1} is {2}", numberOne, numberTwo, output);
             }
-
-
 
         }
 
@@ -152,25 +167,59 @@ namespace Exercises
             Console.WriteLine("4.\tExercise Four - Fox the Lazy Dog");
             Console.WriteLine("5.\tExercise Five - String of Manipulations");
             Console.WriteLine("6.\tExercise six - Comaprison of numbers");
+            Console.WriteLine("7.\tExercise seven - Circelations");
+
             Console.WriteLine("0.\tExit");
             Console.Write("\nEnter menu number (or 0 to exit): ");
         }
-        private static int GetValidInt()
+        private static int GetValidInt(string displayMessage) //Caller entered a message to display
         {
-            Console.Write("Enter an integer: ");
             int number = 0;
             bool didParseNumber = false;
             do
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write(displayMessage);
+                Console.ForegroundColor = ConsoleColor.Green;
+
                 didParseNumber = int.TryParse(Console.ReadLine(), out number);
                 if (!didParseNumber)
                 {
-                    Console.WriteLine("You must enter a number");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("You must enter an integer");
                 }
             }
             while (didParseNumber == false);
 
             return number;
+        }
+        private static int GetValidInt()//Default message is shown.
+        {
+            return GetValidInt("Please enter an integer: ");
+        }
+        private static double GetValidDouble(string displayMessage) //Caller entered a message to display
+        {
+            double number = 0;
+            bool didParseNumber = false;
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write(displayMessage);
+                Console.ForegroundColor = ConsoleColor.Green;
+                didParseNumber = double.TryParse(Console.ReadLine(), out number);
+                if (!didParseNumber)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("You must enter a number!");
+                }
+            }
+            while (didParseNumber == false);
+
+            return number;
+        }
+        private static double GetValidDouble()//Default message is shown.
+        {
+            return GetValidInt("Please enter a number: ");
         }
 
 
